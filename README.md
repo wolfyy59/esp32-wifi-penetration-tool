@@ -51,9 +51,13 @@ If you have setup ESP-IDF, the easiest way is to use `idf.py flash`.
 
 In case you don't want to setup whole ESP-IDF, you can use pre-build binaries included in [`build/`](build/) and flash them using [`esptool.py`](https://github.com/espressif/esptool) (requires Python).
 
-Example command (follow instructions in [esptool repo](https://github.com/espressif/esptool)):
+Example command (follow instructions in [esptool repo](https://github.com/espressif/esptool)): install python3 With some Python installations this may not work and you’ll receive an error, try python -m pip install esptool or pip3 install esptool, or consult your Python installation manual for information about how to access pip.
+
+Setuptools is also a requirement which is not available on all systems by default. You can install it by a package manager of your operating system, or by pip install setuptools.
+
+After installing, you will have esptool.py installed into the default Python executables directory and you should be able to run it with the command esptool.py or python -m esptool. Please note that probably only python -m esptool will work for Pythons installed from Windows Store.
 ```
-esptool.py -p /dev/ttyS5 -b 115200 --after hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size detect 0x8000 build/partition_table/partition-table.bin 0x1000 build/bootloader/bootloader.bin 0x10000 build/esp32-wifi-penetration-tool.bin
+esptool.py -p COM16 -b 115200 --after hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size detect 0x8000 build/partition_table/partition-table.bin 0x1000 build/bootloader/bootloader.bin 0x10000 build/esp32-wifi-penetration-tool.bin
 ```
 
 On Windows you can use official [Flash Download Tool](https://www.espressif.com/en/support/download/other-tools).
